@@ -32,57 +32,46 @@ $posts = [
     ]
   ]
 ];
+
+$key_list = array_keys($posts);
 ?>
 
 <ul>
-  <li>
-    10-10-2021
-    <?php
-      for ($i = 0; $i < count($posts['10-10-2021']); $i++) {
-        $post = $posts['10-10-2021'][$i];
-      ?>
-        <h3>
-          <?php
-              echo $post['title'];
-          ?>
-        </h3>
-        <p>
-          <?php
-            echo $post['author'];
-          ?>
-        </p>
-        <p>
-          <?php
-            echo $post['content'];
-          ?>
-        </p>
-      <?php
-      }
+  <?php
+    for ($i = 0; $i < count($posts); $i++) { 
+      $key = $key_list[$i];
+      $post_list = $posts[$key];
     ?>
-  </li>
-  <li>
-    11-12-2021
-    <?php
-      for ($i = 0; $i < count($posts['11-12-2021']); $i++) {
-        $post = $posts['11-12-2021'][$i];
-      ?>
-        <h3>
-          <?php
-              echo $post['title'];
-          ?>
-        </h3>
-        <p>
-          <?php
-            echo $post['author'];
-          ?>
-        </p>
-        <p>
-          <?php
-            echo $post['content'];
-          ?>
-        </p>
+    <li>
+      <strong>
+        <?php
+          echo $key;
+        ?>
+      </strong>
       <?php
-      }
-    ?>
-  </li>
+        for ($y = 0; $y < count($post_list); $y++) {
+          $post = $post_list[$y];
+        ?>
+          <h3>
+            <?php
+                echo $post['title'];
+            ?>
+          </h3>
+          <em>
+            <?php
+              echo $post['author'];
+            ?>
+          </em>
+          <p>
+            <?php
+              echo $post['content'];
+            ?>
+          </p>
+        <?php
+        }
+      ?>
+    </li>
+    <?php
+    }
+  ?>
 </ul>
